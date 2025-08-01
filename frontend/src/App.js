@@ -18,7 +18,7 @@ import ForgotPasswordPage from './pages/auth/ForgotPasswordPage';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import StudentsList from './pages/admin/StudentsList';
 import StudentDetails from './pages/admin/StudentDetails';
-import CoursesList from './pages/admin/CoursesList';
+import CourseManagement from './pages/admin/CourseManagement';
 import CourseDetails from './pages/admin/CourseDetails';
 import AttendanceManagement from './pages/admin/AttendanceManagement';
 import FeesManagement from './pages/admin/FeesManagement';
@@ -97,7 +97,7 @@ const AppContent = () => {
           <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="students" element={<StudentsList />} />
           <Route path="students/:id" element={<StudentDetails />} />
-          <Route path="courses" element={<CoursesList />} />
+          <Route path="courses" element={<CourseManagement />} />
           <Route path="courses/:id" element={<CourseDetails />} />
           <Route path="attendance" element={<AttendanceManagement />} />
           <Route path="fees" element={<FeesManagement />} />
