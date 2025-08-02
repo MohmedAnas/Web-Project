@@ -4,16 +4,22 @@ set -o errexit
 
 echo "🚀 Starting R.B Computer deployment build process..."
 
-# Upgrade pip first - THIS IS CRUCIAL FOR RENDER
-echo "📦 Upgrading pip..."
+# Upgrade pip and install wheel first - CRUCIAL FOR RENDER
+echo "📦 Upgrading pip and installing wheel..."
 python -m pip install --upgrade pip
+pip install wheel setuptools
 
-# Verify pip version
+# Verify versions
 echo "✅ Pip version: $(pip --version)"
+echo "✅ Wheel version: $(pip show wheel | grep Version || echo 'Wheel installed')"
 
-# Install dependencies from render-specific requirements
-echo "📚 Installing dependencies from requirements-render.txt..."
-pip install -r requirements-render.txt
+# Set environment variables to prefer binary packages
+export PIP_PREFER_BINARY=1
+export PIP_NO_CACHE_DIR=1
+
+# Install dependencies with binary preference
+echo "📚 Installing dependencies (preferring binary packages)..."
+pip install --prefer-binary --no-cache-dir -r requirements-render.txt
 
 # Collect static files for production
 echo "🎨 Collecting static files..."

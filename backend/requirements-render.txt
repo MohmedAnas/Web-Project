@@ -3,7 +3,7 @@ Django==4.2.4
 djangorestframework==3.14.0
 djangorestframework-simplejwt==5.2.2
 
-# Database and utilities
+# Database and utilities (use binary versions)
 dj-database-url==2.1.0
 psycopg2-binary==2.9.7
 python-dotenv==1.0.0
@@ -15,7 +15,7 @@ django-filter==23.2
 # Authentication and security
 PyJWT==2.8.0
 
-# Image processing (downgraded for stability)
+# Image processing (stable version with wheel support)
 Pillow==9.5.0
 
 # Production server and static files
@@ -25,11 +25,17 @@ whitenoise==6.5.0
 # API documentation
 drf-yasg==1.21.7
 
-# Essential utilities
+# Essential utilities (ensure wheel compatibility)
 setuptools>=65.0.0
 wheel>=0.37.0
 python-dateutil==2.9.0.post0
 
-# Additional dependencies that might be needed
+# Additional dependencies
 six>=1.16.0
 pytz>=2023.3
+
+# Ensure these have wheels available
+certifi>=2023.7.22
+charset-normalizer>=3.2.0
+idna>=3.4
+urllib3>=2.0.4
