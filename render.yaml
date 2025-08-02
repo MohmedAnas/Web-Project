@@ -1,48 +1,34 @@
 services:
-  # Backend API Service
   - type: web
-    name: rbcomputer-api
+    name: rbcomputer-backend
     env: python
     region: oregon
-    plan: free
     buildCommand: |
-      cd backend &&
-      pip install -r requirements.txt &&
-      python manage.py collectstatic --noinput &&
-      python manage.py migrate --settings=rbcomputer.settings_production
+      cd backend
+      python -m pip install --upgrade pip
+      pip install -r requirements.txt
+      python manage.py collectstatic --no-input
+      python manage.py migrate
     startCommand: |
-      cd backend &&
-      gunicorn rbcomputer.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --timeout 120
+      cd backend
+      gunicorn rbcomputer.wsgi:application
     envVars:
-      - key: DJANGO_SETTINGS_MODULE
-        value: rbcomputer.settings_production
       - key: PYTHON_VERSION
         value: 3.11.4
       - key: DEBUG
         value: False
-      - key: SECRET_KEY
-        generateValue: true
       - key: DATABASE_URL
         fromDatabase:
           name: rbcomputer-db
           property: connectionString
-      - key: FRONTEND_URL
-        value: https://rbcomputer.netlify.app
-      - key: DEFAULT_FROM_EMAIL
-        value: R.B Computer <noreply@rbcomputer.com>
-    healthCheckPath: /api/health/
-
-  # PostgreSQL Database
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALLOWED_HOSTS
+        value: .onrender.com
+    
   - type: pserv
     name: rbcomputer-db
     env: postgresql
     region: oregon
-    plan: free
     databaseName: rbcomputer
-    user: rbcomputer_user
-
-# Optional: Redis for caching (can be added later)
-# - type: redis
-#   name: rbcomputer-redis
-#   region: oregon
-#   plan: free
+    databaseUser: rbcomputer_user

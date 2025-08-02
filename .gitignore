@@ -30,6 +30,7 @@ db.sqlite3
 db.sqlite3-journal
 media/
 static/
+staticfiles/
 
 # React
 node_modules/
@@ -49,3 +50,11 @@ yarn-error.log*
 *.swp
 *.swo
 *~
+
+# Deployment artifacts
+netlify-env-vars.txt
+set-netlify-env.sh
+
+# OS
+.DS_Store
+Thumbs.db

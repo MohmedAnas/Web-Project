@@ -1,19 +1,35 @@
-# Render-optimized requirements
+# Core Django packages
 Django==4.2.4
 djangorestframework==3.14.0
 djangorestframework-simplejwt==5.2.2
+
+# Database and utilities
+dj-database-url==2.1.0
+psycopg2-binary==2.9.7
+python-dotenv==1.0.0
+
+# CORS and filtering
 django-cors-headers==4.2.0
 django-filter==23.2
-Pillow==10.0.0
-python-dotenv==1.0.0
+
+# Authentication and security
 PyJWT==2.8.0
-# Use psycopg2 instead of psycopg2-binary for better Render compatibility
-psycopg2==2.9.7
+
+# Image processing
+Pillow==10.0.0
+
+# Production server and static files
 gunicorn==21.2.0
 whitenoise==6.5.0
+
+# API documentation
 drf-yasg==1.21.7
-dj-database-url==2.1.0
-# Essential missing dependencies
-setuptools==80.9.0
+
+# Essential utilities
+setuptools>=65.0.0
+wheel>=0.37.0
 python-dateutil==2.9.0.post0
-six==1.17.0
+
+# Additional dependencies that might be needed
+six>=1.16.0
+pytz>=2023.3
