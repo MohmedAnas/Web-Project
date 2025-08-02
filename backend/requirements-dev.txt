@@ -1,13 +1,52 @@
+# Core Django Framework
 Django==4.2.4
 djangorestframework==3.14.0
+
+# Authentication & JWT
 djangorestframework-simplejwt==5.2.2
+PyJWT==2.8.0
+
+# Database
+psycopg2-binary==2.9.7
+dj-database-url==2.1.0
+
+# CORS & Filtering
 django-cors-headers==4.2.0
 django-filter==23.2
-Pillow==9.5.0
+
+# Image Processing
+Pillow==9.0.1
+
+# Environment Variables
 python-dotenv==1.0.0
-PyJWT==2.8.0
+
+# Production Server & Static Files
+gunicorn==21.2.0
+whitenoise==6.5.0
+
+# API Documentation
 drf-yasg==1.21.7
+
+# Utilities
+python-dateutil==2.9.0.post0
+six==1.16.0
+pytz==2023.3
+
+# Development & Testing
 pytest==7.4.0
 pytest-django==4.5.2
 coverage==7.3.0
 factory-boy==3.3.0
+
+# Build Tools
+setuptools==68.0.0
+wheel==0.41.0
+
+# HTTP Requests (if needed)
+requests==2.31.0
+
+# Additional utilities that might be needed
+certifi==2023.7.22
+charset-normalizer==3.2.0
+idna==3.4
+urllib3==2.0.4
