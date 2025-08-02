@@ -18,6 +18,9 @@ pip install djangorestframework==3.14.0 || { echo "❌ DRF failed"; exit 1; }
 echo "🧪 Testing psycopg2-binary..."
 pip install psycopg2-binary==2.9.7 || { echo "❌ psycopg2-binary failed"; exit 1; }
 
+echo "🧪 Testing dj-database-url..."
+pip install dj-database-url==2.1.0 || { echo "❌ dj-database-url failed"; exit 1; }
+
 echo "🧪 Testing gunicorn..."
 pip install gunicorn==21.2.0 || { echo "❌ gunicorn failed"; exit 1; }
 
