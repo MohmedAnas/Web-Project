@@ -15,8 +15,8 @@ django-filter==23.2
 # Authentication and security
 PyJWT==2.8.0
 
-# Image processing (stable version with wheel support)
-Pillow==9.5.0
+# Image processing (very stable version)
+Pillow==9.0.1
 
 # Production server and static files
 gunicorn==21.2.0
