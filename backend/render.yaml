@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: rbcomputer-backend
+    env: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 8000
+      - key: MONGODB_URI
+        sync: false  # Set this in Render dashboard
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: ADMIN_EMAIL
+        value: admin@rbcomputer.com
+      - key: FRONTEND_URL
+        value: https://your-app.netlify.app
+    disk:
+      name: rbcomputer-disk
+      mountPath: /app/uploads
+      sizeGB: 1
