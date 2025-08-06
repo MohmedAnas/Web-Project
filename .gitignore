@@ -86,3 +86,5 @@ env/
 
 # Docker override files with sensitive data
 docker-compose.override.yml
+*.json
+backend/*.json
