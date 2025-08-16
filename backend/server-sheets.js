@@ -17,8 +17,8 @@ const PORT = process.env.PORT || 8000;
 // Security middleware
 app.use(helmet());
 app.use(cors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:3000',
-    credentials: true
+  origin: ['https://68a005b7013c180009bfd548--rbcomputers.netlify.app/', /* or '*' for testing */],
+  credentials: true
 }));
 
 // Rate limiting
