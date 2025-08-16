@@ -1,19 +1,49 @@
 {
-  "name": "backend",
+  "name": "rbcomputer-backend-sheets",
   "version": "1.0.0",
-  "description": "RB Computer backend API server",
-  "main": "index.js",
+  "description": "R.B Computer Student Management System - Express.js Backend with Google Sheets",
+  "main": "server-sheets.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node server-sheets.js",
+    "dev": "nodemon server-sheets.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "setup-sheets": "node src/utils/setupSheets.js",
+    "migrate": "node src/utils/migrate.js"
   },
-  "keywords": [],
-  "author": "Mohmed Anas",
-  "license": "MIT",
+  "keywords": [
+    "student-management",
+    "education",
+    "express",
+    "google-sheets"
+  ],
+  "author": "R.B Computer",
+  "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "axios": "^1.11.0",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^4.21.2",
+    "express-async-errors": "^3.1.1",
+    "express-rate-limit": "^8.0.1",
+    "express-validator": "^7.2.1",
+    "google-auth-library": "^9.15.1",
+    "googleapis": "^144.0.0",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "moment": "^2.30.1",
+    "morgan": "^1.10.1",
+    "multer": "^2.0.2",
+    "node-cron": "^4.2.1",
+    "nodemailer": "^7.0.5",
+    "pdf-lib": "^1.17.1",
+    "pdfkit": "^0.17.1",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1"
+    "jest": "^30.0.5",
+    "nodemon": "^3.1.10",
+    "supertest": "^7.1.4"
   }
 }
