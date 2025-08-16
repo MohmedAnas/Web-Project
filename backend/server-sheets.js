@@ -17,9 +17,14 @@ const PORT = process.env.PORT || 8000;
 // Security middleware
 app.use(helmet());
 app.use(cors({
-  origin: ['https://68a005b7013c180009bfd548--rbcomputers.netlify.app/', /* or '*' for testing */],
+  origin: [
+    'https://rbcomputers.netlify.app',
+    'https://68a005b7013c180009bfd548--rbcomputers.netlify.app'
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
+
 
 // Rate limiting
 const limiter = rateLimit({
