@@ -16,14 +16,13 @@ const PORT = process.env.PORT || 8000;
 
 // Security middleware
 app.use(helmet());
-app.use(cors({
-  origin: [
-    "https://rbcomputers.netlify.app", // main site
-    "https://68a1580ae42a050008e291eb--rbcomputers.netlify.app", // current preview build
-  ],
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true,
-}));
+app.use(
+  cors({
+    origin: "https://68a1580ae42a050008e291eb--rbcomputers.netlify.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 
 
 // Rate limiting
@@ -42,6 +41,13 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 if (process.env.NODE_ENV !== 'test') {
     app.use(morgan('combined'));
 }
+
+app.get('/', (req, res) => {
+    res.json({
+        success: true,
+        message: 'Welcome to the RB Computer Backend API!'
+    });
+});
 
 // Health check endpoint
 app.get('/health', async (req, res) => {
@@ -314,6 +320,8 @@ app.delete('/api/students/:id', async (req, res) => {
         });
     }
 });
+
+
 
 app.get('/api/students/stats/overview', async (req, res) => {
     try {
