@@ -2,7 +2,8 @@ import axios from 'axios';
 
 // Create axios instance with default config
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000/api',
+  // CORRECTED: Remove '/api' from the baseURL. The backend doesn't use this prefix.
+  baseURL: process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -55,7 +56,7 @@ const mapStudentFields = (frontendData) => {
   };
 
   const backendData = {};
-  
+
   // Map frontend fields to backend fields
   Object.keys(frontendData).forEach(key => {
     const backendKey = fieldMapping[key] || key;
@@ -72,7 +73,7 @@ export const authAPI = {
   registerStudent: (data) => {
     const mappedData = mapStudentFields(data);
     return api.post('/students', mappedData);
-  }, // Fixed: Use correct endpoint with field mapping
+  },
   registerAdmin: (data) => api.post('/auth/admin/register/', data),
   getCurrentUser: () => api.get('/auth/user/'),
   logout: () => api.post('/auth/logout/'),
@@ -100,41 +101,41 @@ export const adminAPI = {
   createStudent: (data) => api.post('/admin/students/', data),
   updateStudent: (id, data) => api.patch(`/admin/students/${id}/`, data),
   deleteStudent: (id) => api.delete(`/admin/students/${id}/`),
-  
+
   // Courses
   getCourses: (params) => api.get('/admin/courses/', { params }),
   getCourse: (id) => api.get(`/admin/courses/${id}/`),
   createCourse: (data) => api.post('/admin/courses/', data),
   updateCourse: (id, data) => api.patch(`/admin/courses/${id}/`, data),
   deleteCourse: (id) => api.delete(`/admin/courses/${id}/`),
-  
+
   // Attendance
   getAttendance: (params) => api.get('/admin/attendance/', { params }),
   markAttendance: (data) => api.post('/admin/attendance/', data),
-  
+
   // Fees
   getFees: (params) => api.get('/admin/fees/', { params }),
   recordFeePayment: (data) => api.post('/admin/fees/', data),
-  
+
   // Notices
   getNotices: (params) => api.get('/admin/notices/', { params }),
   getNotice: (id) => api.get(`/admin/notices/${id}/`),
   createNotice: (data) => api.post('/admin/notices/', data),
   updateNotice: (id, data) => api.patch(`/admin/notices/${id}/`, data),
   deleteNotice: (id) => api.delete(`/admin/notices/${id}/`),
-  
+
   // Certificates
   getCertificates: (params) => api.get('/admin/certificates/', { params }),
   getCertificate: (id) => api.get(`/admin/certificates/${id}/`),
   issueCertificate: (data) => api.post('/admin/certificates/', data),
-  
+
   // Dashboard
   getDashboardData: () => api.get('/admin/dashboard/'),
-  
+
   // Settings
   getSettings: () => api.get('/admin/settings/'),
   updateSettings: (data) => api.patch('/admin/settings/', data),
-  
+
   // Admin Approvals
   getPendingApprovals: (params) => api.get('/admin/pending-approvals/', { params }),
   approveAdmin: (id) => api.post(`/admin/approve/${id}/`),
