@@ -18,11 +18,11 @@ const PORT = process.env.PORT || 8000;
 app.use(helmet());
 app.use(cors({
   origin: [
-    'https://rbcomputers.netlify.app',
-    'https://68a005b7013c180009bfd548--rbcomputers.netlify.app'
+    "https://rbcomputers.netlify.app", // main site
+    "https://68a1580ae42a050008e291eb--rbcomputers.netlify.app", // current preview build
   ],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
 }));
 
 
