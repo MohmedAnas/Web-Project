@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { Loader2, ArrowLeft, User, Mail, Phone, MapPin, Calendar, BookOpen } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { authAPI } from '../../services/api';
+import studentService from '../../services/api/studentService';
 
 // Validation schema for student registration
 const studentRegistrationSchema = Yup.object().shape({
@@ -69,19 +70,23 @@ const StudentRegistrationPage = () => {
       // Remove confirm_password and terms_accepted from the data sent to API
       const { confirm_password, terms_accepted, ...registrationData } = values;
       
-      const response = await authAPI.registerStudent(registrationData);
+      const response = await studentService.createStudent(registrationData);
       
-      toast.success('Registration successful! Please check your email for verification.');
-      navigate('/login');
+      if (response.success) {
+        toast.success('Registration successful! Please check your email for verification.');
+        navigate('/login');
+      } else {
+        toast.error(response.message || 'Registration failed.');
+      }
     } catch (error) {
       const errorMessage = error.response?.data?.message || 
-                          error.response?.data?.error || 
-                          'Registration failed. Please try again.';
+                         error.response?.data?.error || 
+                         'Registration failed. Please try again.';
       toast.error(errorMessage);
     } finally {
       setLoading(false);
     }
-  };
+};
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8 px-4">
