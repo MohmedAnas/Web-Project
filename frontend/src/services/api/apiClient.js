@@ -4,10 +4,10 @@ import { getAuthToken, clearAuthTokens } from '../../utils/auth';
 // Create axios instance with default config
 const apiClient = axios.create({
   baseURL: process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000/api',
+  timeout: parseInt(process.env.REACT_APP_API_TIMEOUT) || 10000,
   headers: {
     'Content-Type': 'application/json',
   },
-  timeout: parseInt(process.env.REACT_APP_API_TIMEOUT) || 10000,
 });
 
 // Request interceptor for adding auth token
