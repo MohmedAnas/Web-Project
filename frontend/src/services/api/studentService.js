@@ -38,13 +38,14 @@ const studentService = {
    * @returns {Promise} Promise with created student
    */
   createStudent: async (studentData) => {
-    try {
-      const response = await apiClient.post('/students', studentData);
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
-  },
+  try {
+    const response = await apiClient.post('/api/auth/student/register', studentData);
+    return response.data;
+  } catch (error) {
+    console.error('Error creating student:', error);
+    throw error;
+  }
+},
   
   /**
    * Update a student
