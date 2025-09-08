@@ -12,6 +12,7 @@ const studentSheetsService = require('./src/services/studentSheetsService');
 const courseSheetsService = require('./src/services/courseSheetsService');
 
 const app = express();
+app.set('trust proxy', 1); // or true for all proxies
 const PORT = process.env.PORT || 8000;
 
 // Security middleware
