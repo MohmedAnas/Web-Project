@@ -278,11 +278,17 @@ const updateCourse = async (req, res) => {
     }
 
     // Check for name uniqueness if name is being updated
-    if (updateData.name && updateData.name !== course.name) {
-      const existingCourse = await Course.findOne({ 
-        name: { $regex: new RegExp(`^${updateData.name}$`, 'i') },
-        _id: { $ne: id }
-      });
+    iif (updateData.name && updateData.name !== course.name) {
+  // Escape user data for regex
+  const safeName = escapeRegex(updateData.name);
+  // Build ^...$ pattern as a string
+  const pattern = `^${safeName}$`;
+
+  const existingCourse = await Course.findOne({
+    name: { $regex: pattern, $options: 'i' }, // no RegExp, just a string!
+    _id: { $ne: id }
+  });
+}
       
       if (existingCourse) {
         return res.status(400).json({
