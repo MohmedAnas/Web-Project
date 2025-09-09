@@ -1,5 +1,6 @@
 const Course = require('../models/Course');
 const Student = require('../models/Student');
+const { escapeRegex } = require('../utils/regexHelpers');
 const User = require('../models/User');
 const { 
   getPagination, 
