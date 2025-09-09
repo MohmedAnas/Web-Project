@@ -85,7 +85,7 @@ const authorize = (...roles) => {
 
 // Check if user has minimum role level
 const requireMinRole = (minRole) => {
-  const { USER_ROLES, ROLE_HIERARCHY } = require('../config/constants');
+  const {ROLE_HIERARCHY } = require('../config/constants');
   
   return (req, res, next) => {
     if (!req.user) {
