@@ -630,8 +630,8 @@ class AnalyticsService {
       return Math.round(((currentCount - previousCount) / previousCount) * 100);
 
     } catch (error) {
-      return 0;
-    }
+  logger.error('Failed to fetch value:', error);
+  return 0;}
   }
 
   async calculateAverageCompletionRate() {
