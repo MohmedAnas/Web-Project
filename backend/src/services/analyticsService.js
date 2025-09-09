@@ -599,7 +599,6 @@ class AnalyticsService {
 
   async calculateGrowthRate(type, filters) {
     try {
-      const currentPeriod = new Date();
       const previousPeriod = new Date();
       previousPeriod.setMonth(previousPeriod.getMonth() - 1);
 
