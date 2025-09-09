@@ -146,7 +146,7 @@ const validateAdminRegistration = [
     .trim()
     .isLength({ min: 3, max: 30 })
     .withMessage('Username must be between 3 and 30 characters')
-    .matches(/^[a-zA-Z0-9_]+$/)
+    .matches(/^\w+$/)
     .withMessage('Username can only contain letters, numbers, and underscores'),
   body('email')
     .isEmail()
