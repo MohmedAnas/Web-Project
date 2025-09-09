@@ -89,10 +89,10 @@ const scheduleValidation = [
     .isIn(Object.values(BATCH_TYPES))
     .withMessage('Invalid batch type'),
   body('batches.*.startTime')
-    .matches(/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/)
+    .matches(/^([0-1]?\d|2[0-3]):[0-5]\d$/)
     .withMessage('Invalid start time format (HH:MM)'),
   body('batches.*.endTime')
-    .matches(/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/)
+    .matches(/^([0-1]?\d|2[0-3]):[0-5]\d$/)
     .withMessage('Invalid end time format (HH:MM)'),
   body('batches.*.days')
     .isArray({ min: 1 })
