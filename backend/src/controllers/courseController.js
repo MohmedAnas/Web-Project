@@ -34,6 +34,7 @@ const getCourses = async (req, res) => {
 
     // Search functionality
     if (search) {
+      const safeSearch = escapeRegex(search);
       query.$or = [
         { name: { $regex: search, $options: 'i' } },
         { description: { $regex: search, $options: 'i' } },
